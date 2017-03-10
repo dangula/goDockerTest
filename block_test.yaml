@@ -13,22 +13,15 @@ spec:
     requests:
       storage: 1M
 ---
-apiVersion: extensions/v1beta1
-kind: Deployment
+apiVersion: v1
+kind: Pod
 metadata:
   name: block-test
 spec:
-  strategy:
-    type: Recreate
-  template:
-    metadata:
-      labels:
-        app: wordpress
-        tier: mysql
-    spec:
       containers:
       - image: dangula/mytest
         name: block-test1
+        imagePullPolicy: IfNotPresent
         env:
         - name: TestName
           value: FileRW_test.go
