@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: block-pv-claim
+  annotations:
+    volume.beta.kubernetes.io/storage-class: rook-block
+  labels:
+    app: wordpress
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1M
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: block-test
+spec:
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: wordpress
+        tier: mysql
+    spec:
+      containers:
+      - image: dangula/mytest
+        name: block-test1
+        env:
+        - name: TestName
+          value: FileRW_test.go
+        volumeMounts:
+        - name: block-persistent-storage
+          mountPath: /tmp/rook1
+      volumes:
+      - name: block-persistent-storage
+        persistentVolumeClaim:
+          claimName: block-pv-claim
