@@ -1,4 +1,4 @@
 #!/bin/bash
 echo $TestName
-#glide updates
-#go test -v $TestName
+glide update
+go test -v $TestName
