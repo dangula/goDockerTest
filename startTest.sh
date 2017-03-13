@@ -1,4 +1,4 @@
 #!/bin/bash
 echo $TestName
 
-go test $TestName
+go test -v $TestName

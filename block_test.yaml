@@ -19,12 +19,12 @@ metadata:
   name: block-test
 spec:
       containers:
-      - image: dangula/mytest
+      - image: dangula/rook-integration
         name: block-test1
         imagePullPolicy: IfNotPresent
         env:
         - name: TestName
-          value: FileRW_test.go
+          value: integrationTests/blockStorage_test.go
         volumeMounts:
         - name: block-persistent-storage
           mountPath: /tmp/rook1
