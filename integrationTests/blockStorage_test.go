@@ -2,7 +2,7 @@ package integrationTests
 
 import (
 	"testing"
-	helper "goDockerTest/helpers"
+	helper "github.com/dangula/goDockerTest/helpers"
 	"github.com/stretchr/testify/assert"
 )
 

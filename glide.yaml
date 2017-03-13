@@ -1,0 +1,10 @@
+package: goDockerTest
+import: []
+testImport:
+- package: github.com/dangula/goDockerTest
+  subpackages:
+  - helpers
+- package: github.com/stretchr/testify
+  version: ^1.1.4
+  subpackages:
+  - assert

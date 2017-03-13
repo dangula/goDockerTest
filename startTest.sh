@@ -1,4 +1,4 @@
 #!/bin/bash
 echo $TestName
-go install
-#go test -v $TestName
+glide updates
+go test -v $TestName
