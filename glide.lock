@@ -1,9 +1,11 @@
-hash: 36eb9a18fabd2387b11c3641af0c1e23293038ed96b853aa96f10b14bebe35f3
-updated: 2017-03-13T14:48:25.446540876-07:00
-imports: []
+hash: 3ea424b28f823bd79280cb3033d61dfcc9eb3b463ba6e3aeec66baf007fc23b9
+updated: 2017-03-15T10:09:48.559185814-07:00
+imports:
+- name: github.com/satori/go.uuid
+  version: 879c5887cd475cd7864858769793b2ceb0d44feb
 testImports:
 - name: github.com/dangula/goDockerTest
-  version: 4053123c5137c5e1c95fa5bf925621c8a68453f5
+  version: a519a5acf97da943472f63da0e8b033fa02fa6ba
   subpackages:
   - helpers
 - name: github.com/davecgh/go-spew

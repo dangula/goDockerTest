@@ -4,13 +4,14 @@ import (
 	"testing"
 	helper "github.com/dangula/goDockerTest/helpers"
 	"github.com/stretchr/testify/assert"
+	"github.com/satori/go.uuid"
 )
 
 const BLOCK_PATH = "/tmp/rook1"
-const BLOCK_FILE_NAME = "file1"
 const BLOCK_DATA = "writing in folder provisioned by rook"
 
 func TestBlockStoage_integrationTest(t *testing.T) {
+	BLOCK_FILE_NAME := uuid.NewV4().String()
 	t.Log("Test Block Storage mount - provioned by rook")
 
 	t.Log("Make sure mount directory is present")

@@ -1,6 +1,19 @@
 #!/bin/bash
 echo "Running Test : "$TestName
-#update depenencies
+#Install and update depenencies
+glide install
 glide update
-#run test
-go test -v $TestName
+
+# Run Test
+case $TestName in
+
+    #Run Block Tests
+    [Bb][Ll][Oo][Cc][Kk])
+          go test -v integrationTests/*block*
+          ;;
+    *) echo "Invalid Test Flag used"
+         ;;
+
+esac
+
+

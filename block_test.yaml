@@ -22,7 +22,7 @@ spec:
         imagePullPolicy: IfNotPresent
         env:
         - name: TestName
-          value: integrationTests/blockStorage_test.go
+          value: INSERT_TEST_TYPE
         volumeMounts:
         - name: block-persistent-storage
           mountPath: /tmp/rook1
@@ -30,3 +30,4 @@ spec:
       - name: block-persistent-storage
         persistentVolumeClaim:
           claimName: block-pv-claim
+      restartPolicy: Never
