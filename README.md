@@ -15,8 +15,10 @@
        sed 's#INSERT_HERE#'$MONS'#' rook-storageclass.yaml | kubectl create -f -
      
   
-  2. Start Rook Test Container
-     * kubectl create -f block_test.yaml 
+  2. Start Rook Test Container with the Test type argument
+     * e.g . sed 's#INSERT_TEST_TYPE#'block'#' block_test.yaml | kubectl create -f - 
   3. Look at Pod logs to see if tests pased or failed
      * kubectl logs block-test
+  4. clean up  - delete the pod once tests are completed
+     * kubectl delete pods block-test
  
