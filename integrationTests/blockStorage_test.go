@@ -22,13 +22,13 @@ func TestBlockStoage_integrationTest(t *testing.T) {
 
 	}
 
-	t.Log("Write and Read to block storage mount")
+	t.Log("Make sure you can write to block storage mount")
 	if _, err := helper.WriteToFile(BLOCK_PATH, BLOCK_FILE_NAME, BLOCK_DATA); err != nil {
 		t.Log(err)
 		t.Errorf("Cannot Write to Block Storage Mount")
 		t.Fail()
 	}
-
+	t.Log("Make sure you can read from block storage mount")
 	if readData, err := helper.ReadFile(BLOCK_PATH, BLOCK_FILE_NAME); err != nil {
 		t.Log(err)
 		t.Errorf("Cannot Read From Block Strorage Mount")
