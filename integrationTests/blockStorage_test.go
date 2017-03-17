@@ -25,16 +25,15 @@ func TestBlockStoage_integrationTest(t *testing.T) {
 	t.Log("Write and Read to block storage mount")
 	if _, err := helper.WriteToFile(BLOCK_PATH, BLOCK_FILE_NAME, BLOCK_DATA); err != nil {
 		t.Log(err)
-		t.Errorf("Expected Block to be created")
+		t.Errorf("Cannot Write to Block Storage Mount")
 		t.Fail()
 	}
 
 	if readData, err := helper.ReadFile(BLOCK_PATH, BLOCK_FILE_NAME); err != nil {
 		t.Log(err)
-		t.Errorf("Expected Block to be created")
+		t.Errorf("Cannot Read From Block Strorage Mount")
 		t.Fail()
 	} else {
-		t.Log(readData)
 		assert.Equal(t,readData,BLOCK_DATA,"content of the file should be unchanged")
 
 	}
