@@ -1,4 +1,4 @@
-package integrationTests
+package blockTests
 
 import (
 	helper "github.com/dangula/goDockerTest/helpers"

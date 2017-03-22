@@ -9,7 +9,7 @@ case $TestName in
 
     #Run Block Tests
     [Bb][Ll][Oo][Cc][Kk])
-          go test -v integrationTests/*block*
+          go test -v integrationTests/blockTests/*block*
           ;;
     *) echo "Invalid Test Flag used"
          ;;
