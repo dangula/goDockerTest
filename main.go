@@ -1,9 +1,9 @@
 package main
 
 import (
-	helper "github.com/dangula/goDockerTest/helpers"
 	"fmt"
 	"os"
+	helper "goDockerTest/helpers"
 )
 
 
@@ -16,8 +16,6 @@ func main() {
 	fmt.Println("AWS_HOST:", os.Getenv("AWS_HOST"))
 	fmt.Println("AWS_KEY:", os.Getenv("AWS_KEY"))
 	fmt.Println("AWS_SECRET:", os.Getenv("AWS_SECRET"))
-
-
 
 	created,err := helper.CreateBucket("myBucket1")
 	if err !=nil{

@@ -1,6 +1,10 @@
-hash: 1c649f116362c85451dee530f46640570a9cf57735a51d0eaf4d4ccdb1654eda
-updated: 2017-03-28T20:15:18.097006909-07:00
+hash: 4569659b3c3c73ddd0b0e0c2be310daf4943bd258b83771b7118c8d19dee81d8
+updated: 2017-03-28T22:32:33.452755267-07:00
 imports:
+- name: github.com/dangula/goDockerTest
+  version: a519a5acf97da943472f63da0e8b033fa02fa6ba
+  subpackages:
+  - helpers
 - name: github.com/minio/minio-go
   version: dcaae9ec4d0b0a81d17f22f6d7a186491f6a55ec
   subpackages:
@@ -11,10 +15,6 @@ imports:
 - name: github.com/satori/go.uuid
   version: 879c5887cd475cd7864858769793b2ceb0d44feb
 testImports:
-- name: github.com/dangula/goDockerTest
-  version: a519a5acf97da943472f63da0e8b033fa02fa6ba
-  subpackages:
-  - helpers
 - name: github.com/davecgh/go-spew
   version: 6d212800a42e8ab5c146b8ace3490ee17e5225f9
   subpackages:

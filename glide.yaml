@@ -4,10 +4,10 @@ import:
   version: ^1.1.0
 - package: github.com/minio/minio-go
   version: ^2.0.4
-testImport:
 - package: github.com/dangula/goDockerTest
   subpackages:
   - helpers
+testImport:
 - package: github.com/stretchr/testify
   version: ^1.1.4
   subpackages:
