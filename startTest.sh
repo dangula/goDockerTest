@@ -15,7 +15,7 @@ case $TestName in
           go test -v integrationTests/fileTests/*file*
           ;;
     [Oo][Bb][Jj][Ee][Cc][Tt])
-          go test -v integrationTests/fileTests/*file*
+          go test -v integrationTests/objectTests/*object*
           ;;
     *) echo "Invalid Test Flag used - only block,file or object allowed"
          ;;
