@@ -10,7 +10,7 @@ import (
 const FILE_PATH = "/tmp/rookfs"
 const FILE_DATA = "writing in folder provisioned by rook"
 
-func TestIfBlockStorageMountIsPresent(t *testing.T) {
+func TestIfFileStorageMountIsPresent(t *testing.T) {
 	t.Log("Make sure File storage mount is present")
 	if _, err := helper.IsDirectoryPresent(FILE_PATH); err != nil {
 		t.Log(err)
@@ -20,7 +20,7 @@ func TestIfBlockStorageMountIsPresent(t *testing.T) {
 	}
 }
 
-func TestWritingToBlockStorageMount(t *testing.T) {
+func TestWritingToFileStorageMount(t *testing.T) {
 	BLOCK_FILE_NAME := uuid.NewV4().String()
 	t.Log("Make sure you can write to file storage mount")
 	if _, err := helper.WriteToFile(FILE_PATH, BLOCK_FILE_NAME, FILE_DATA); err != nil {
@@ -31,7 +31,7 @@ func TestWritingToBlockStorageMount(t *testing.T) {
 
 }
 
-func TestReadingFromBlockStorageMount(t *testing.T) {
+func TestReadingFromFileStorageMount(t *testing.T) {
 	BLOCK_FILE_NAME := uuid.NewV4().String()
 	_, err := helper.WriteToFile(FILE_PATH, BLOCK_FILE_NAME, FILE_DATA)
 	if err != nil {
