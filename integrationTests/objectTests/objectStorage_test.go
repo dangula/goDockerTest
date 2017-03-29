@@ -7,7 +7,7 @@ import (
 	"testing"
 )
 
-func TestCreatingNewBucketOnObjectStore(t *testing.T){
+func Test_Creating_New_Bucket_On_RookObjectStore(t *testing.T){
 	created,err := helper.CreateBucket("mybucket1")
 	if err !=nil{
 		t.Log(err)
@@ -27,7 +27,7 @@ func TestCreatingNewBucketOnObjectStore(t *testing.T){
 	}
 }
 
-func TestPuttingObjectOnABucketInRookObjectStore(t *testing.T){
+func Test_Putting_Object_On_A_Bucket_In_RookObjectStore(t *testing.T){
 	isBucketPresent,err := helper.IsBucketPresent("mybucket1")
 	if err !=nil{
 		t.Log(err)
@@ -56,7 +56,7 @@ func TestPuttingObjectOnABucketInRookObjectStore(t *testing.T){
 
 }
 
-func TestGettingObjectOnABucketInRookObjectStore(t *testing.T){
+func Test_Getting_Object_From_A_Bucket_In_RookObjectStore(t *testing.T){
 	isBucketPresent,err := helper.IsBucketPresent("mybucket1")
 	if err !=nil{
 		t.Log(err)
