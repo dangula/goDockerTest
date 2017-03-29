@@ -38,14 +38,26 @@ func PutObjectInBucket(bucketName string,objectName string,data string) (bool,er
 	if err != nil {
 		return false,err
 	}
-	object, err := os.Open("my-testfile")
-	if err != nil {
-		return false,err
-	}
-	defer object.Close()
-	object.WriteString(data)
 
-	_, err = s3Client.PutObject(bucketName, objectName, object, "application/octet-stream")
+
+	fileCreate, _ := os.Create("/tmp/tempFile")
+	if err != nil {
+		return false, err
+	}
+	defer fileCreate.Close()
+
+	file, err := os.OpenFile("/tmp/tempFile", os.O_RDWR, 0644)
+	if err != nil {
+		return false, err
+	}
+	defer file.Close()
+
+	_, err = file.WriteString(data)
+	if err != nil {
+		return false, err
+	}
+
+	_, err = s3Client.PutObject(bucketName, objectName, file, "application/octet-stream")
 	if err != nil {
 		return false,err
 	}
