@@ -56,5 +56,9 @@ func main() {
 		panic(err)
 	}
 	fmt.Printf("data from object store : ", data)
+	fmt.Println("    ")
+
+
+	helper.GetObj2("mybucket1","myobj1")
 
 }

@@ -3,6 +3,7 @@ package helpers
 import (
 	"github.com/minio/minio-go"
 	"io/ioutil"
+	"fmt"
 )
 
 const AWS_HOST = "10.101.76.217:53390"
@@ -62,6 +63,24 @@ func GetObjectFromBucket(bucketName string,objectName string) (string,error){
 	}
 
 	return string(str), nil
+}
+
+func GetObj2(bucketName string,objectName string){
+	s3Client, err := minio.New(AWS_HOST, ACCCESS_KEY_ID, ACCESS_KEY_SECRET, false)
+	if err != nil {
+		panic(err)
+	}
+	reader, err := s3Client.GetObject(bucketName, objectName)
+	if err != nil {
+		panic(err)
+	}
+	defer reader.Close()
+	stat, err := reader.Stat()
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(stat)
+	fmt.Println("content-type :",stat.ContentType)
 }
 
 
