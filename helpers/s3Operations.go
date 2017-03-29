@@ -39,25 +39,9 @@ func PutObjectInBucket(bucketName string,objectName string,data string) (bool,er
 		return false,err
 	}
 
+       WriteToFile("/tmp","tempfile",data);
 
-	fileCreate, _ := os.Create("/tmp/tempFile")
-	if err != nil {
-		return false, err
-	}
-	defer fileCreate.Close()
-
-	file, err := os.OpenFile("/tmp/tempFile", os.O_RDWR, 0644)
-	if err != nil {
-		return false, err
-	}
-	defer file.Close()
-
-	_, err = file.WriteString(data)
-	if err != nil {
-		return false, err
-	}
-
-	_, err = s3Client.FPutObject(bucketName, objectName, "/tmp/tmpFile","application/text")
+	_, err = s3Client.FPutObject(bucketName, objectName, "/tmp/tempfile","application/text")
 	if err != nil {
 		return false,err
 	}
