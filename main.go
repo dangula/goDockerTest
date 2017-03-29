@@ -21,7 +21,7 @@ func main() {
 	// New returns an Amazon S3 compatible client object. API compatibility (v2 or v4) is automatically
 	// determined based on the Endpoint value.
 	s3Client, err := minio.New("10.101.76.217:53390", "G4ZU50JKHOBG3N8NUH88",
-		"gmNoXmRsJRJwwJ0KGCy4NCbbfOc7aR1sUSeUfVOu", true)
+		"gmNoXmRsJRJwwJ0KGCy4NCbbfOc7aR1sUSeUfVOu", false)
 	if err != nil {
 		log.Fatalln(err)
 	}
