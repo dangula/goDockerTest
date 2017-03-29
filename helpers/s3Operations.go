@@ -2,14 +2,15 @@ package helpers
 
 import (
 	"github.com/minio/minio-go"
+	"github.com/satori/go.uuid"
 	"io/ioutil"
 	"os"
 	"io"
 )
 
-const AWS_HOST = "10.101.76.217:53390"
-const ACCCESS_KEY_ID = "G4ZU50JKHOBG3N8NUH88"
-const ACCESS_KEY_SECRET= "gmNoXmRsJRJwwJ0KGCy4NCbbfOc7aR1sUSeUfVOu"
+ var AWS_HOST = os.Getenv("AWS_ENDPOINT")
+ var ACCCESS_KEY_ID = os.Getenv("AWS_KEY")
+ var ACCESS_KEY_SECRET= os.Getenv("AWS_SECRET")
 
 func CreateBucket(bucketName string) (bool,error){
 	s3Client, err := minio.New(AWS_HOST, ACCCESS_KEY_ID, ACCESS_KEY_SECRET, false)
@@ -39,10 +40,10 @@ func PutObjectInBucket(bucketName string,objectName string,data string) (bool,er
 	if err != nil {
 		return false,err
 	}
+	OBJ_PUT_FILE_NAME := uuid.NewV4().String()
+        WriteToFile("/tmp",OBJ_PUT_FILE_NAME,data);
 
-       WriteToFile("/tmp","tempfile",data);
-
-	_, err = s3Client.FPutObject(bucketName, objectName, "/tmp/tempfile","application/text")
+	_, err = s3Client.FPutObject(bucketName, objectName, "/tmp/"+OBJ_PUT_FILE_NAME,"application/text")
 	if err != nil {
 		return false,err
 	}
@@ -50,23 +51,9 @@ func PutObjectInBucket(bucketName string,objectName string,data string) (bool,er
 	return true,nil
 }
 
+
 func GetObjectFromBucket(bucketName string,objectName string) (string,error){
-	s3Client, err := minio.New(AWS_HOST, ACCCESS_KEY_ID, ACCESS_KEY_SECRET, false)
-	if err != nil {
-		return "error connecting to host",err
-	}
-	if err := s3Client.FGetObject(bucketName, objectName,"/tmp/getObj"); err != nil {
-		return "failed to get object",err
-	}
-	str, err := ioutil.ReadFile("/tmp/getObj")
-	if err != nil {
-		return "fail", err
-	}
-
-	return string(str), nil
-}
-
-func GetObj2(bucketName string,objectName string) (string,error){
+	OBJ_GET_FILE_NAME := uuid.NewV4().String()
 	s3Client, err := minio.New(AWS_HOST, ACCCESS_KEY_ID, ACCESS_KEY_SECRET, false)
 	if err != nil {
 		panic(err)
@@ -76,7 +63,7 @@ func GetObj2(bucketName string,objectName string) (string,error){
 		panic(err)
 	}
 	defer reader.Close()
-	localFile, err := os.Create("/tmp/fromget")
+	localFile, err := os.Create("/tmp/"+OBJ_GET_FILE_NAME)
 	if err != nil {
 		panic(err)
 	}
@@ -91,7 +78,12 @@ func GetObj2(bucketName string,objectName string) (string,error){
 		panic(err)
 	}
 
-	return "/tmp/fromget",nil
+	str, err := ioutil.ReadFile("/tmp/"+OBJ_GET_FILE_NAME)
+	if err != nil {
+		panic(err)
+	}
+
+	return string(str),nil
 
 
 }

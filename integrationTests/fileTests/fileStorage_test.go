@@ -7,7 +7,7 @@ import (
 	"testing"
 )
 
-const FILE_PATH = "/tmp/rook2"
+const FILE_PATH = "/tmp/rookfs"
 const FILE_DATA = "writing in folder provisioned by rook"
 
 func TestIfBlockStorageMountIsPresent(t *testing.T) {

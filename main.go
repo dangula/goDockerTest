@@ -8,13 +8,10 @@ import (
 )
 
 
-// Lists all objects in a bucket using pagination
-//
-// Usage:
-// listObjects <bucket>
+
 func main() {
 
-	fmt.Println("AWS_HOST:", os.Getenv("AWS_HOST"))
+	fmt.Println("AWS_ENDPOINT:", os.Getenv("AWS_ENDPOINT"))
 	fmt.Println("AWS_KEY:", os.Getenv("AWS_KEY"))
 	fmt.Println("AWS_SECRET:", os.Getenv("AWS_SECRET"))
 
@@ -60,13 +57,8 @@ func main() {
 	fmt.Println("    ")
 
 
-	file,err :=helper.GetObj2("mybucket1","myobj1")
+	str,err :=helper.GetObjectFromBucket("mybucket1","myobj1")
 
 
-	str, err := ioutil.ReadFile(file)
-	if err != nil {
-		panic(err)
-	}
-
-	fmt.Println("get data : ",string(str))
+	fmt.Println("get data : ",str)
 }

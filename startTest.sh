@@ -11,9 +11,14 @@ case $TestName in
     [Bb][Ll][Oo][Cc][Kk])
           go test -v integrationTests/blockTests/*block*
           ;;
-    *) echo "Invalid Test Flag used"
+    [Ff][Ii][Ll][Ee])
+          go test -v integrationTests/fileTests/*file*
+          ;;
+    [Oo][Bb][Jj][Ee][Cc][Tt])
+          go test -v integrationTests/fileTests/*file*
+          ;;
+    *) echo "Invalid Test Flag used - only block,file or object allowed"
          ;;
-
 esac
 
 
