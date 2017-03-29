@@ -17,7 +17,7 @@ func main() {
 	fmt.Println("AWS_KEY:", os.Getenv("AWS_KEY"))
 	fmt.Println("AWS_SECRET:", os.Getenv("AWS_SECRET"))
 
-	created,err := helper.CreateBucket("myBucket1")
+	created,err := helper.CreateBucket("mybucket1")
 	if err !=nil{
 		fmt.Println("error creating bucket")
 		panic(err)
@@ -28,7 +28,7 @@ func main() {
 		fmt.Println("myBucket1 created successfully")
 	}
 
-	bucketPresent,err := helper.IsBucketPresent("myBucket")
+	bucketPresent,err := helper.IsBucketPresent("mybucket1")
 	if err !=nil{
 		fmt.Println("error getting bucket")
 		panic(err)
@@ -39,7 +39,7 @@ func main() {
 		fmt.Println("Bucket present")
 	}
 
-	putSuccess,err := helper.PutObjectInBucket("myBucket","myobj1","object 1 datat for rook")
+	putSuccess,err := helper.PutObjectInBucket("mybucket1","myobj1","object 1 datat for rook")
 	if err !=nil{
 		fmt.Println("error getting bucket")
 		panic(err)
@@ -50,7 +50,7 @@ func main() {
 		fmt.Println("put data in object store successfully")
 	}
 
-	data,err :=helper.GetObjectFromBucket("myBucket","myobj1")
+	data,err :=helper.GetObjectFromBucket("mybucket1","myobj1")
 	if err !=nil{
 		fmt.Println("error getting bucket")
 		panic(err)
