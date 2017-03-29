@@ -81,6 +81,14 @@ func GetObj2(bucketName string,objectName string){
 	}
 	fmt.Println(stat)
 	fmt.Println("content-type :",stat.ContentType)
+	fmt.Println("Key :",stat.Key)
+	fmt.Println("Metadata :",stat.Metadata)
+	fmt.Println("Size :",stat.Size)
+	fmt.Println("StorageClass :",stat.StorageClass)
+	fmt.Println("Owner :",stat.Owner)
+	fmt.Println("ETag :",stat.ETag)
+
+
 }
 
 
