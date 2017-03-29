@@ -3,7 +3,6 @@ package helpers
 import (
 	"github.com/minio/minio-go"
 	"io/ioutil"
-	"os"
 )
 
 const AWS_HOST = "10.101.76.217:53390"
