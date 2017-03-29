@@ -16,7 +16,7 @@ func CreateBucket(bucketName string) (bool,error){
 		return false,err
 	}
 
-	err = s3Client.MakeBucket(bucketName,"")
+	err = s3Client.MakeBucket(bucketName,"us-east-1")
 	if err != nil {
 		return false,err
 	}
