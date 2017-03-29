@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"io/ioutil"
 	helper "github.com/dangula/goDockerTest/helpers"
 )
 
@@ -61,6 +62,11 @@ func main() {
 
 	file,err :=helper.GetObj2("mybucket1","myobj1")
 
-	getdata,err := helper.ReadFile(file,"")
-	fmt.Println("get data : ",getdata)
+
+	str, err := ioutil.ReadFile(file)
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println("get data : ",string(str))
 }
