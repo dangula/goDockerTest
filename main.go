@@ -28,7 +28,7 @@ func main() {
 		fmt.Println("myBucket1 created successfully")
 	}
 
-	bucketPresent,err := helper.IsBucketPresent("myBucket1")
+	bucketPresent,err := helper.IsBucketPresent("myBucket")
 	if err !=nil{
 		fmt.Println("error getting bucket")
 		panic(err)
@@ -39,7 +39,7 @@ func main() {
 		fmt.Println("Bucket present")
 	}
 
-	putSuccess,err := helper.PutObjectInBucket("myBucket1","myobj1","object 1 datat for rook")
+	putSuccess,err := helper.PutObjectInBucket("myBucket","myobj1","object 1 datat for rook")
 	if err !=nil{
 		fmt.Println("error getting bucket")
 		panic(err)
@@ -50,7 +50,7 @@ func main() {
 		fmt.Println("put data in object store successfully")
 	}
 
-	data,err :=helper.GetObjectFromBucket("myBucket1","myobj1")
+	data,err :=helper.GetObjectFromBucket("myBucket","myobj1")
 	if err !=nil{
 		fmt.Println("error getting bucket")
 		panic(err)
