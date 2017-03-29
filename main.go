@@ -1,9 +1,9 @@
 package main
 
 import (
-	"log"
-	"github.com/minio/minio-go"
-
+	helper "github.com/dangula/goDockerTest/helpers"
+	"fmt"
+	"os"
 )
 
 
@@ -12,23 +12,51 @@ import (
 // Usage:
 // listObjects <bucket>
 func main() {
-	// Note: YOUR-ACCESSKEYID, YOUR-SECRETACCESSKEY and my-bucketname are
-	// dummy values, please replace them with original values.
 
-	// Requests are always secure (HTTPS) by default. Set secure=false to enable insecure (HTTP) access.
-	// This boolean value is the last argument for New().
+	fmt.Println("AWS_HOST:", os.Getenv("AWS_HOST"))
+	fmt.Println("AWS_KEY:", os.Getenv("AWS_KEY"))
+	fmt.Println("AWS_SECRET:", os.Getenv("AWS_SECRET"))
 
-	// New returns an Amazon S3 compatible client object. API compatibility (v2 or v4) is automatically
-	// determined based on the Endpoint value.
-	s3Client, err := minio.New("10.101.76.217:53390", "G4ZU50JKHOBG3N8NUH88",
-		"gmNoXmRsJRJwwJ0KGCy4NCbbfOc7aR1sUSeUfVOu", false)
-	if err != nil {
-		log.Fatalln(err)
+
+
+	created,err := helper.CreateBucket("myBucket1")
+	if err !=nil{
+		fmt.Println("error creating bucket")
+		panic(err)
+	}
+	if !created {
+		fmt.Printf("Object not created successfully")
+	} else {
+		fmt.Println("myBucket1 created successfully")
 	}
 
-	err = s3Client.MakeBucket("my-bucketname", "us-east-1")
-	if err != nil {
-		log.Fatalln(err)
+	bucketPresent,err := helper.IsBucketPresent("myBucket1")
+	if err !=nil{
+		fmt.Println("error getting bucket")
+		panic(err)
 	}
-	log.Println("Success")
+	if !bucketPresent {
+		fmt.Printf("Bucket not present")
+	} else {
+		fmt.Println("Bucket present")
+	}
+
+	putSuccess,err := helper.PutObjectInBucket("myBucket1","myobj1","object 1 datat for rook")
+	if err !=nil{
+		fmt.Println("error getting bucket")
+		panic(err)
+	}
+	if !putSuccess {
+		fmt.Printf("cannot put data in object store")
+	} else {
+		fmt.Println("put data in object store successfully")
+	}
+
+	data,err :=helper.GetObjectFromBucket("myBucket1","myobj1")
+	if err !=nil{
+		fmt.Println("error getting bucket")
+		panic(err)
+	}
+	fmt.Printf("data from object store : ", data)
+
 }

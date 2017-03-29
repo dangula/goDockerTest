@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: s3-test
+  namespace: rook
+spec:
+      containers:
+      - image: dangula/rook-integration
+        name: block-test1
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: TestName
+          value: file
+        - name: AWS_HOST
+          value: 10.101.76.217:53390
+        - name: AWS_KEY
+          value: G4ZU50JKHOBG3N8NUH88
+        - name: AWS_SECRET
+          value: gmNoXmRsJRJwwJ0KGCy4NCbbfOc7aR1sUSeUfVOu
+
