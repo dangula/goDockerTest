@@ -59,6 +59,8 @@ func main() {
 	fmt.Println("    ")
 
 
-	helper.GetObj2("mybucket1","myobj1")
+	file,err :=helper.GetObj2("mybucket1","myobj1")
 
+	getdata,err := helper.ReadFile(file,"")
+	fmt.Println("get data : ",getdata)
 }

@@ -3,7 +3,8 @@ package helpers
 import (
 	"github.com/minio/minio-go"
 	"io/ioutil"
-	"fmt"
+	"os"
+	"io"
 )
 
 const AWS_HOST = "10.101.76.217:53390"
@@ -65,7 +66,7 @@ func GetObjectFromBucket(bucketName string,objectName string) (string,error){
 	return string(str), nil
 }
 
-func GetObj2(bucketName string,objectName string){
+func GetObj2(bucketName string,objectName string) (string,error){
 	s3Client, err := minio.New(AWS_HOST, ACCCESS_KEY_ID, ACCESS_KEY_SECRET, false)
 	if err != nil {
 		panic(err)
@@ -75,19 +76,22 @@ func GetObj2(bucketName string,objectName string){
 		panic(err)
 	}
 	defer reader.Close()
+	localFile, err := os.Create("/tmp/fromget")
+	if err != nil {
+		panic(err)
+	}
+	defer localFile.Close()
+
 	stat, err := reader.Stat()
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println("READER :" ,reader)
-	fmt.Println(stat)
-	fmt.Println("content-type :",stat.ContentType)
-	fmt.Println("Key :",stat.Key)
-	fmt.Println("Metadata :",stat.Metadata)
-	fmt.Println("Size :",stat.Size)
-	fmt.Println("StorageClass :",stat.StorageClass)
-	fmt.Println("Owner :",stat.Owner)
-	fmt.Println("ETag :",stat.ETag)
+
+	if _, err := io.CopyN(localFile, reader, stat.Size); err != nil {
+		panic(err)
+	}
+
+	return "/tmp/fromget",nil
 
 
 }
