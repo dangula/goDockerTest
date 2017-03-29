@@ -79,6 +79,7 @@ func GetObj2(bucketName string,objectName string){
 	if err != nil {
 		panic(err)
 	}
+	fmt.Println("READER :" ,reader)
 	fmt.Println(stat)
 	fmt.Println("content-type :",stat.ContentType)
 	fmt.Println("Key :",stat.Key)
