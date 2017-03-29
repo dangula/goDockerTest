@@ -57,7 +57,7 @@ func PutObjectInBucket(bucketName string,objectName string,data string) (bool,er
 		return false, err
 	}
 
-	_, err = s3Client.PutObject(bucketName, objectName, file, "application/octet-stream")
+	_, err = s3Client.FPutObject(bucketName, objectName, "/tmp/tmpFile","application/text")
 	if err != nil {
 		return false,err
 	}
