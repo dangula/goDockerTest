@@ -17,7 +17,10 @@ spec:
   volumes:
   - name: testfs
     cephfs:
-      monitors: INSERT_HERE
+      monitors:
+      - CEPH_MON0
+      - CEPH_MON1
+      - CEPH_MON2
       user: admin
       secretRef:
         name: rook-admin
