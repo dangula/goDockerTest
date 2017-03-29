@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"os"
-	"io/ioutil"
 	helper "github.com/dangula/goDockerTest/helpers"
 )
 
