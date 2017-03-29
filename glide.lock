@@ -1,6 +1,13 @@
-hash: 3ea424b28f823bd79280cb3033d61dfcc9eb3b463ba6e3aeec66baf007fc23b9
-updated: 2017-03-15T10:09:48.559185814-07:00
+hash: 1c649f116362c85451dee530f46640570a9cf57735a51d0eaf4d4ccdb1654eda
+updated: 2017-03-28T20:15:18.097006909-07:00
 imports:
+- name: github.com/minio/minio-go
+  version: dcaae9ec4d0b0a81d17f22f6d7a186491f6a55ec
+  subpackages:
+  - pkg/policy
+  - pkg/s3signer
+  - pkg/s3utils
+  - pkg/set
 - name: github.com/satori/go.uuid
   version: 879c5887cd475cd7864858769793b2ceb0d44feb
 testImports:
