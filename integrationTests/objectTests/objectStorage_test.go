@@ -8,6 +8,8 @@ import (
 )
 
 func Test_Creating_New_Bucket_On_RookObjectStore(t *testing.T){
+
+	t.Log("Make sure you can create a bucket on rook object store")
 	created,err := helper.CreateBucket("mybucket1")
 	if err !=nil{
 		t.Log(err)
@@ -28,6 +30,8 @@ func Test_Creating_New_Bucket_On_RookObjectStore(t *testing.T){
 }
 
 func Test_Putting_Object_On_A_Bucket_In_RookObjectStore(t *testing.T){
+	t.Log("Make sure you can put an object in rook object store")
+
 	isBucketPresent,err := helper.IsBucketPresent("mybucket1")
 	if err !=nil{
 		t.Log(err)
@@ -57,6 +61,8 @@ func Test_Putting_Object_On_A_Bucket_In_RookObjectStore(t *testing.T){
 }
 
 func Test_Getting_Object_From_A_Bucket_In_RookObjectStore(t *testing.T){
+	t.Log("Make sure you can get an object from rook object store")
+
 	isBucketPresent,err := helper.IsBucketPresent("mybucket1")
 	if err !=nil{
 		t.Log(err)
