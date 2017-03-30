@@ -4,10 +4,11 @@
   
  You Should start the container/pod on a cluster running rook.
  ### Pre-requiste
+  Running k8s cluster with Rook running. Tests are designed to run as pods in a k8s cluster with rook installed.
  
  #####  Instructions for Tests :
    1. check out this project on host running k8s cluster with Rook. 
-   2. Use the start up script provided to run test - the script does the necesary set up and teardown for test. 
+   2. Use the start up script- TestPodsSetUp.sh  provided to run test - the script does the necesary set up and teardown for test. 
    3. The start up script takes a single paramater - the type of tests to run  - allowed values are block,file or object.
    4. The start up script does the following - 
       i. Does necessary set for storage privisioning - eg. create filesystem for mounting file system volume or creating storageClass for block volumes
